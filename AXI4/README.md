@@ -8,7 +8,7 @@ Formal verification tool: **Cadence jasper**
 
 AXI4 bus 設計在此 [repository](<https://github.com/Rex1110/rv32i-axi4-platform>)。
 
-![checker](https://github.com/Rex1110/Formal-verification/assets/123956376/9f59b110-a11c-4caa-a612-c61d6269c5fa)
+![checker](https://github.com/Rex1110/Formal-verification/assets/123956376/2df3a111-8645-4aac-9775-1f0dea260d45)
 
 
 
