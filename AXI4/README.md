@@ -1,14 +1,25 @@
 # AXI4 Protocol Checkers 
 
+### 2024/6/7 更新說明：SRAM Burst Length & Size 變更
+- **變更詳情**：
+  - **Burst Length Size**: 原版本 SRAM SLAVE 僅支援 AxLen=0, AxSize=0，更新後可支援 AxLen=0~16, AxSize=0, 1, 2。
+- **變更原因**：
+  - 在進行 UVM Slave 端 SRAM 驗證的時候想要加入更多 case 因此進行更改。
+- **Formal verification影響**：
+  - 無影響。
 
+-------------------------------------------------------------------------
 Formal verification tool: **Cadence jasper**
 
 基於 [AMBA® AXI™ and ACE™ Protocol Specification](<http://www.gstitt.ece.ufl.edu/courses/fall15/eel4720_5721/labs/refs/AXI4_specification.pdf>) 
 和 [AXI Protocol Checker LogiCORE IP Product Guide](<https://docs.amd.com/r/en-US/pg101-axi-protocol-checker/Introduction>) 所撰寫 property。
 
-AXI4 bus 設計在此 [repository](<https://github.com/Rex1110/rv32i-axi4-platform>)。
+AXI4 bus [設計](<https://github.com/Rex1110/rv32i-axi4-platform>)，[UVM驗證](https://github.com/Rex1110/UVM/tree/master/AXI4-SRAM-slave)。
 
-![checker](https://github.com/Rex1110/Formal-verification/assets/123956376/2df3a111-8645-4aac-9775-1f0dea260d45)
+
+![checker](https://github.com/Rex1110/Formal-verification/assets/123956376/fbe5cd7a-affe-4687-8126-1d4719d021e3)
+
+
 
 
 
