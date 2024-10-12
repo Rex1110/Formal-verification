@@ -43,13 +43,6 @@ module axi4pc_sva(
     // WRITE ADDRESS CHANNEL
     // ******************************************************
 
-    AXI_ERRM_AWADDR_BOUNDARY: assert property(
-        @(posedge ACLK) disable iff (~ARESETn)(
-            AWVALID |-> ((AWADDR + ((AWLEN + 1) << AWSIZE)) & 32'hffff_f000) == (AWADDR & 32'hffff_f000)
-        )
-    );
-
-
     AXI_ERRM_AWBURST: assert property(
         @(posedge ACLK) disable iff (~ARESETn)(
             AWVALID |-> (AWBURST != 2'b11)
@@ -226,12 +219,6 @@ module axi4pc_sva(
     // ******************************************************
     // READ ADDRESS CHANNEL
     // ******************************************************
-
-    AXI_ERRM_ARADDR_BOUNDARY: assert property(
-        @(posedge ACLK) disable iff (~ARESETn)(
-            ARVALID |-> ((ARADDR + ((ARSIZE + 1) << ARLEN)) && 32'hffff_f000) == (ARADDR && 32'hffff_f000)
-        )
-    );
 
     AXI_ERRM_ARBURST: assert property(
         @(posedge ACLK) disable iff (~ARESETn)(

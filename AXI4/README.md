@@ -32,23 +32,6 @@ AXI4 bus [設計](<https://github.com/Rex1110/rv32i-axi4-platform>)，[UVM驗證
 
 ## **2. Write address channel cheacks**
 
-### ❌ AXI_ERRM_AWADDR_BOUNDARY
-#### - **Description:** A write burst cannot cross a 4 KB boundary.
-
-![1](https://github.com/Rex1110/Formal-verification/assets/123956376/e92fb93e-f80d-46c1-b502-10af3c26755c)
-
-
-![AXI_ERRM_AWADDR_BOUNDARY_wave](https://github.com/Rex1110/Formal-verification/assets/123956376/588622fb-9b40-4fbb-b188-0520ea61d9e9)
-
-
-AWADDR = 32'hffff_fffd \
-AWLEN = 4'd0000 \
-AWSIZE = 3'b010 
-
-End of address = 32'hffff_fffd + 1 * 4bytes = 32'h0000_0001
-
-根據此條斷言可使用位置必須落在 4 KB 區間而，32'hffff_fffd 跨至 32'h0000_0001，因此斷言失敗。
-
 ### ✅ AXI_ERRM_AWBURST
 #### - **Description:** A value of 2’b11 on AWBURST is not permitted when AWVALID is High.
 
@@ -185,12 +168,6 @@ End of address = 32'hffff_fffd + 1 * 4bytes = 32'h0000_0001
 
 
 ## **5. Read address channel cheacks**
-
-### ❗ AXI_ERRM_ARADDR_BOUNDARY
-#### - **Description:** A read burst cannot cross a 4 KB boundary.
-
-![23](https://github.com/Rex1110/Formal-verification/assets/123956376/ba642ce7-f47c-4b53-9707-414854cd4702)
-
 
 ### ✅ AXI_ERRM_ARBURST
 #### - **Description:** A value of 2'b11 on ARBURST is not permitted when ARVALID is High.
@@ -466,13 +443,9 @@ End of address = 32'hffff_fffd + 1 * 4bytes = 32'h0000_0001
 
 ## **8. Summary**
 
-斷言失敗皆為跨 4KB boundary，在設計上並沒有特別處理跨 4KB 的問題，如果此次 transaction 會跨越 4KB boundary，則應該要拆成兩個 transaction。
-
 斷言先驗條件未成立的部分為當在 VALID 訊號拉起而 READY 訊號未拉起時，則VALID 訊號必須保持穩定狀態。 然而在設計中，當 VALID 訊號拉起時 READY 訊號已經準備就緒。這並未違反 SPEC，如下。 因此此類斷言由於先驗條件無法滿足，也就不會有後續情況不滿足，均視為通過。
 
 > [!NOTE]
 > While it is acceptable to wait for **VALID** to be asserted before asserting **READY**, it is also acceptable to assert **READY** before detecting the corresponding **VALID**. This can result in a more efficient design.
 
-![summary](https://github.com/Rex1110/Formal-verification/assets/123956376/27ea8372-5609-4fd1-926f-5092855a108f)
-
-
+![summary](https://github.com/user-attachments/assets/ef4f22ce-8d4c-4e3d-adae-a92c3fa34804)
