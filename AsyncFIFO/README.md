@@ -1,5 +1,6 @@
 ## **1. Schematic**
-![asyncFIFO](https://github.com/user-attachments/assets/9e317e50-4c2a-4009-b5d1-741d60f3bc6a)
+![Asynchronous FIFO](https://github.com/user-attachments/assets/2adf9cdb-bcb6-4c7c-aa44-e72ee9d2fd89)
+
 
 ## **2. Specification**
 
